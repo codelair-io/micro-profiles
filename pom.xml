@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.codelair</groupId>
+    <artifactId>micro-profiles</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>MicroProfiles Parent</name>
+    <description>Parent POM for Microprofile container integrations</description>
+
+    <modules>
+        <module>micro-kumuluz</module>
+        <module>micro-openliberty</module>
+        <module>micro-payara</module>
+        <module>micro-thorntail</module>
+        <module>micro-tomee</module>
+    </modules>
+
+</project>
