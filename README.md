@@ -2,7 +2,7 @@
 
 ## 1. Description
 
-A small project used to test Ecliple Microprofile on different containers.
+A small project used to test Eclipse Microprofile on different containers.
 
 ## 2. Purpose
 
