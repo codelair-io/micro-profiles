@@ -41,6 +41,7 @@ public class ProgrammaticConfigServlet extends HttpServlet {
                 .append("Location: " + config.getValue("io.codelair.person.location", String.class) + "\n")
                 .append("Age: " + config.getValue("io.codelair.person.age", Integer.class) + "\n")
                 .append("Pets: " + Arrays.toString(config.getValue("io.codelair.person.pets", String[].class)) + "\n")
+                .append("Account Balance: " + config.getValue("io.codelair.person.balance", Double.class) + "\n")
                 .append("Gender: " + config.getValue("io.codelair.person.gender", String.class) + "\n")
                 .append("Profession: " + config.getValue("io.codelair.person.profession", String.class) + "\n")
                 .toString();

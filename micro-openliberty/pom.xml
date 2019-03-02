@@ -83,10 +83,15 @@
                         <executions>
                             <execution>
                                 <id>package-uberjar</id>
+                                <phase>package</phase>
                                 <goals>
+                                    <goal>install-apps</goal>
                                     <goal>package-server</goal>
                                 </goals>
                                 <configuration>
+                                    <appsDirectory>dropins</appsDirectory>
+                                    <stripVersion>true</stripVersion>
+                                    <installAppPackages>all</installAppPackages>
                                     <packageFile>${project.build.directory}/${project.artifactId}-uberjar.jar</packageFile>
                                     <include>runnable,minify</include>
                                     <os>linux</os>

@@ -40,6 +40,10 @@ public class InjectableConfigServlet extends HttpServlet {
     @ConfigProperty(name = "io.codelair.person.pets")
     private String[] pets;
 
+    @Inject
+    @ConfigProperty(name = "io.codelair.person.balance")
+    private double balance;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // create response message
@@ -49,6 +53,7 @@ public class InjectableConfigServlet extends HttpServlet {
                 .append("Append : " + location + "\n")
                 .append("Age : " + age + "\n")
                 .append("Pets : " + Arrays.toString(pets) + "\n")
+                .append("Account balance : " + balance + "\n")
                 .toString();
 
         // prepare response message
