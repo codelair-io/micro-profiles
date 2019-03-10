@@ -17,3 +17,4 @@ A small project used to test Eclipse Microprofile on different containers.
 3. Apache TomEE
 4. Payara/Payara Micro
 5. Thorntail
+6. Quarkus
