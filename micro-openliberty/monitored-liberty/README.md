@@ -21,8 +21,8 @@ and is used in monitoring tools (e.g. Prometheus) to filter and group metric-dat
 
 Tags can be applied in two ways:
 
-1. At the metric-level .........
-   - ``
+1. At the metric-level
+   - e.g `@Counted(name = "getAllTodos.count", tags = {"app=myval", "metric=customCounterMetric"})` showed as: `application:get_all_todos_count{app="myval",metric="customCounterMetric"} 11`
 2. At the application level using `MP_METRICS_TAGS` environment variable
    - e.g `MP_METRICS_TAGS=app=myShop,tier=integration.....`
 
@@ -37,3 +37,32 @@ Tags can be applied in two ways:
 5.  `timer`: a metric which aggregates timing durations and provides duration statistics, plus
     throughput statistics.
 
+## Running the application
+
+After deploying the application, `localhost:9080/metrics` can be used to see prometheus metrics that.
+If the GET request to `metrics/*` contains Accept header `application/json`, then the metrics are displayed as JSON:
+
+```
+    curl http://localhost:9080/metrics/application -H "ACCEPT:application/json" | jq
+    {
+      "io.codelair.todo.TodoService.getAllTodos.responsetime": {
+        "fiveMinRate": 0.9308220420518488,
+        "max": 103557,
+        "count": 14,
+        "p50": 24136,
+        "p95": 77281,
+        "p98": 77281,
+        "p75": 28151,
+        "p99": 103557,
+        "min": 14966,
+        "fifteenMinRate": 1.2194604051871916,
+        "meanRate": 0.10283446156573803,
+        "mean": 31939.97145200506,
+        "p999": 103557,
+        "oneMinRate": 0.2723202011087104,
+        "stddev": 20184.932294487735
+      }
+    }
+```
+
+In addition, to get metric metadata, the Accept header `application/json` and http OPTIONS request should be passed.

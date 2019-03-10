@@ -9,15 +9,8 @@ public class Todo {
     private String description;
     private boolean isFinished;
 
-    private Todo(){
+    public Todo(){
 
-    }
-
-    private Todo(Builder builder) {
-        id = builder.id;
-        task = builder.task;
-        description = builder.description;
-        isFinished = builder.isFinished;
     }
 
     public long getId() {
@@ -36,36 +29,23 @@ public class Todo {
         return isFinished;
     }
 
-    // Builder
-    public static class Builder{
-        private long id;
-        private String task;
-        private String description;
-        private boolean isFinished;
+    public Todo setId(long id) {
+        this.id = id;
+        return this;
+    }
 
-        // Build
-        public Todo build(){
-            return new Todo(this);
-        }
+    public Todo setTask(String task) {
+        this.task = task;
+        return this;
+    }
 
-        public Builder setId(long id) {
-            this.id = id;
-            return this;
-        }
+    public Todo setDescription(String description) {
+        this.description = description;
+        return this;
+    }
 
-        public Builder setTask(String task) {
-            this.task = task;
-            return this;
-        }
-
-        public Builder setDescription(String description) {
-            this.description = description;
-            return this;
-        }
-
-        public Builder setFinished(boolean finished) {
-            isFinished = finished;
-            return this;
-        }
+    public Todo setFinished(boolean finished) {
+        isFinished = finished;
+        return this;
     }
 }
