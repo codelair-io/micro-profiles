@@ -30,6 +30,7 @@
         <module>monitored-liberty</module>
         <module>resty-liberty</module>
         <module>traced-liberty</module>
+        <module>secured-liberty</module>
     </modules>
 
     <build>
@@ -54,7 +55,7 @@
                             <version>${liberty.server.version}</version>
                             <type>zip</type>
                         </assemblyArtifact>
-                        <serverName>${project.artifactId}</serverName>
+                        <serverName>liberty</serverName>
                         <configDirectory>src/liberty/</configDirectory>
                     </configuration>
                     <executions>

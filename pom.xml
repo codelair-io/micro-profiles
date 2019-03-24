@@ -19,6 +19,7 @@
         <module>micro-payara</module>
         <module>micro-thorntail</module>
         <module>micro-tomee</module>
+        <module>micro-quarkus</module>
     </modules>
 
     <properties>

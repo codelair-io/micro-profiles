@@ -26,6 +26,7 @@
         <module>configurable-quarkus</module>
         <module>healthy-quarkus</module>
         <module>reactive-quarkus</module>
+        <module>secured-quarkus</module>
     </modules>
 
     <build>
