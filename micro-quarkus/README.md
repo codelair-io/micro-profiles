@@ -3,7 +3,8 @@
 Compile and install using `mvn clean install`  
 To run a live-coding environment `mvn compile quarkus:dev` 
 
-## Using SmallRye Health in a native image 
+# Issues
+- Using SmallRye Health in a native image 
 Will just not work:
 https://github.com/quarkusio/quarkus/issues/1482  
 https://github.com/quarkusio/quarkus/pull/1521  
