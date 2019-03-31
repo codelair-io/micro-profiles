@@ -1,4 +1,4 @@
-# Metrics for Eclipse MicroProfile
+# MicroProfile Metrics 1.1
 
 To ensure reliable operation of software it is necessary to monitor essential system parameters.
 
