@@ -16,4 +16,24 @@
     <name>CoffeShop :: Barista</name>
     <packaging>war</packaging>
 
+    <properties>
+        <context>barista</context>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>net.wasdev.wlp.maven.plugins</groupId>
+                <artifactId>liberty-maven-plugin</artifactId>
+                <configuration>
+                    <configDirectory>../src/liberty</configDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
