@@ -36,7 +36,7 @@ public class SecureResourceTest {
     public void shouldAllowCallWithJWT(){
         //given
         var client = OidcClient.Builder.newBuilder()
-                .setClientId("admin")
+                .setClientId("admin-cli")
                 .setUsername("admin")
                 .setPassword("admin")
                 .setAuthUrl("http://localhost:4040/auth/realms/master/protocol/openid-connect/auth")
