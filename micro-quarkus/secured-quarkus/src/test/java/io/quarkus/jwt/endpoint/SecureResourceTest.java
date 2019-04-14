@@ -19,16 +19,7 @@ public class SecureResourceTest {
 
     @BeforeEach
     public void setupTest(){
-        var client = OidcClient.Builder.newBuilder()
-                .setClientId("admin")
-                .setUsername("admin")
-                .setPassword("admin")
-                .setAuthUrl("http://localhost:4040/auth/realms/master/protocol/openid-connect/auth")
-                .setTokenUrl("http://localhost:4040/auth/realms/master/protocol/openid-connect/token")
-                .setRedirectUri("")
-                .build();
 
-        this.token = client.performTokenCall(OidcClient.FetchMethod.DIRECT_ACCESS_GRANT);
     }
 
     @Test
@@ -43,6 +34,19 @@ public class SecureResourceTest {
 
     @Test
     public void shouldAllowCallWithJWT(){
+        //given
+        var client = OidcClient.Builder.newBuilder()
+                .setClientId("admin")
+                .setUsername("admin")
+                .setPassword("admin")
+                .setAuthUrl("http://localhost:4040/auth/realms/master/protocol/openid-connect/auth")
+                .setTokenUrl("http://localhost:4040/auth/realms/master/protocol/openid-connect/token")
+                .setRedirectUri("")
+                .build();
+
+        this.token = client.performTokenCall(OidcClient.FetchMethod.DIRECT_ACCESS_GRANT);
+
+        //when
         System.out.println("token = " + token.getString("access_token"));
         Response response =
                 given()
@@ -51,6 +55,7 @@ public class SecureResourceTest {
                     .get("/secure/allowIfAuth")
                 .thenReturn();
 
+        //then
         assertThat(response.getStatusCode())
                 .isEqualTo(HttpURLConnection.HTTP_OK);
     }
