@@ -17,7 +17,7 @@
          ResourceScoped bean for inspection. -->
     <mpJwt id="jwtUserConsumer"
            keyName="default"
-           audiences="admin"
+           audiences="admin-cli"
            jwksUri="http://localhost:4040/auth/realms/master/protocol/openid-connect/certs"
            issuer="http://localhost:4040/auth/realms/master"
            userNameAttribute="preferred_username"/>

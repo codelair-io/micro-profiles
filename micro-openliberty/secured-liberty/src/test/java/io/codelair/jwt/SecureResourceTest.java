@@ -3,7 +3,6 @@ package io.codelair.jwt;
 import jwt.endpoint.JaxRsApplication;
 import jwt.endpoint.SecureResource;
 import jwt.util.OidcClient;
-import org.codehaus.groovy.syntax.TokenUtil;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
@@ -37,7 +36,7 @@ public class SecureResourceTest extends AbstractRunner{
     @Before
     public void setupTest(){
         var oidcClient = OidcClient.Builder.newBuilder()
-                .setClientId("admin")
+                .setClientId("admin-cli")
                 .setUsername("admin")
                 .setPassword("admin")
                 .setRedirectUri("")

@@ -1,7 +1,6 @@
 package jwt.endpoint;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
-
 import javax.annotation.security.DenyAll;
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
