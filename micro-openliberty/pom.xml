@@ -61,7 +61,7 @@
                     <executions>
                         <execution>
                             <id>create-server</id>
-                            <phase>prepare-package</phase>
+                            <phase>compile</phase>
                             <goals>
                                 <goal>create-server</goal>
                             </goals>
