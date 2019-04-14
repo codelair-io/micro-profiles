@@ -14,9 +14,15 @@
 
     <artifactId>traced-liberty</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <name>${project.parent.artifactId} :: ${project.artifactId}</name>
+
+    <modules>
+        <module>Barista</module>
+        <module>CoffeShop</module>
+        <module>CoffeShopInventory</module>
+    </modules>
 
     <build>
         <plugins>
