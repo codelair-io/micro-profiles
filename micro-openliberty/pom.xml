@@ -108,7 +108,7 @@
     <dependencies>
         <dependency>
             <groupId>io.openliberty.features</groupId>
-            <artifactId>microProfile-2.1</artifactId>
+            <artifactId>microProfile-2.2</artifactId>
             <version>${liberty.server.version}</version>
             <scope>provided</scope>
             <type>pom</type>
