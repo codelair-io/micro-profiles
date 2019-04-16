@@ -13,7 +13,7 @@
     </parent>
 
     <artifactId>Barista</artifactId>
-    <name>CoffeShop :: Barista</name>
+    <name>CoffeeShop :: Barista</name>
     <packaging>war</packaging>
 
     <properties>

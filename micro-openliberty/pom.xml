@@ -20,7 +20,7 @@
 
     <properties>
         <maven.compiler.target>11</maven.compiler.target>
-        <liberty.server.version>19.0.0.1</liberty.server.version>
+        <liberty.server.version>19.0.0.3</liberty.server.version>
     </properties>
 
     <modules>

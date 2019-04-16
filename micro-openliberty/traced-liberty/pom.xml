@@ -20,8 +20,8 @@
 
     <modules>
         <module>Barista</module>
-        <module>CoffeShop</module>
-        <module>CoffeShopInventory</module>
+        <module>CoffeeShop</module>
+        <module>CoffeeShopInventory</module>
     </modules>
 
     <build>

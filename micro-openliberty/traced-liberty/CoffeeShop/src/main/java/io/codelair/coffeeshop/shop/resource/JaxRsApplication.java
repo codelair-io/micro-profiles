@@ -1,4 +1,4 @@
-package io.codelair.coffeshop.shop.resource;
+package io.codelair.coffeeshop.shop.resource;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

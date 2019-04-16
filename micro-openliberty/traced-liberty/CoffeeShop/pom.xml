@@ -12,12 +12,12 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>CoffeShop</artifactId>
-    <name>CoffeShop :: Shop</name>
+    <artifactId>CoffeeShop</artifactId>
+    <name>CoffeeShop :: Shop</name>
     <packaging>war</packaging>
 
     <properties>
-        <context>coffeshop</context>
+        <context>coffeeshop</context>
     </properties>
 
     <build>
