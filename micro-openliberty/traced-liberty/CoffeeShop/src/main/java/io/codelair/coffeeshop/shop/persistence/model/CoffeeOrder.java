@@ -1,39 +1,51 @@
 package io.codelair.coffeeshop.shop.persistence.model;
 
-public class CoffeeOrder {
-    private CoffeeType coffeeType;
+public class CoffeeOrder
+{
+    private Coffee coffee;
     private int quantity;
 
-    public CoffeeOrder(Builder builder) {
-        coffeeType = builder.coffeeType;
+    public CoffeeOrder()
+    {
+    }
+
+    CoffeeOrder(Builder builder)
+    {
+        coffee = builder.coffee;
         quantity = builder.quantity;
     }
 
     // Getters
-    public CoffeeType getCoffeeType() {
-        return coffeeType;
+    public Coffee getCoffee()
+    {
+        return coffee;
     }
 
-    public int getQuantity() {
+    public int getQuantity()
+    {
         return quantity;
     }
 
     // Builder
-    public static class Builder {
-        private CoffeeType coffeeType;
+    public static class Builder
+    {
+        private Coffee coffee;
         private int quantity;
 
         // build
-        public CoffeeOrder build() {
+        public CoffeeOrder build()
+        {
             return new CoffeeOrder(this);
         }
 
-        public Builder setCoffeeType(CoffeeType coffeeType) {
-            this.coffeeType = coffeeType;
+        public Builder setCoffee(Coffee coffee)
+        {
+            this.coffee = coffee;
             return this;
         }
 
-        public Builder setQuantity(int quantity) {
+        public Builder setQuantity(int quantity)
+        {
             this.quantity = quantity;
             return this;
         }
