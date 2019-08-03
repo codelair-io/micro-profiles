@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -19,9 +17,20 @@
     <description>MicroProfile implementation on the OpenLiberty container</description>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>11</maven.compiler.target>
-        <liberty.server.version>19.0.0.3</liberty.server.version>
     </properties>
+
+    <developers>
+        <developer>
+            <name>Hassan Nazar</name>
+            <email>hassan.nazar@redbridge.se</email>
+            <organization>Redbridge Technology AB</organization>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
 
     <modules>
         <module>configurable-liberty</module>
@@ -34,6 +43,7 @@
     </modules>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -49,12 +59,7 @@
                     <artifactId>liberty-maven-plugin</artifactId>
                     <version>2.6</version>
                     <configuration>
-                        <assemblyArtifact>
-                            <groupId>io.openliberty</groupId>
-                            <artifactId>openliberty-runtime</artifactId>
-                            <version>${liberty.server.version}</version>
-                            <type>zip</type>
-                        </assemblyArtifact>
+                        <installDirectory>${env.SERVER_DIR}/openliberty/19.0.0.7/wlp</installDirectory>
                         <serverName>liberty</serverName>
                         <configDirectory>src/liberty/</configDirectory>
                     </configuration>
@@ -107,11 +112,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.openliberty.features</groupId>
-            <artifactId>microProfile-2.2</artifactId>
-            <version>${liberty.server.version}</version>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.microprofile</groupId>
+            <artifactId>microprofile</artifactId>
+            <version>3.0</version>
             <type>pom</type>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

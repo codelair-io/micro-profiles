@@ -27,9 +27,8 @@ public class InjectableConfigServlet extends HttpServlet {
     private Optional<String> optionalSurname; // optionals are supported
 
     @Inject
-    @ConfigProperty(
-            name = "io.codelair.person.location",
-            defaultValue = "unknown") // default value-mappings are also supported
+    @ConfigProperty(name = "io.codelair.person.location", defaultValue = "unknown") // default value-mappings are also
+                                                                                    // supported
     private String location;
 
     @Inject
@@ -47,14 +46,10 @@ public class InjectableConfigServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // create response message
-        final var responseMessage = new StringBuilder()
-                .append("Name : " + name + "\n")
-                .append("Surname : " + optionalSurname.orElse("unknown") + "\n")
-                .append("Append : " + location + "\n")
-                .append("Age : " + age + "\n")
-                .append("Pets : " + Arrays.toString(pets) + "\n")
-                .append("Account balance : " + balance + "\n")
-                .toString();
+        final var responseMessage = new StringBuilder().append("Name : " + name + "\n")
+                .append("Surname : " + optionalSurname.orElse("unknown") + "\n").append("Append : " + location + "\n")
+                .append("Age : " + age + "\n").append("Pets : " + Arrays.toString(pets) + "\n")
+                .append("Account balance : " + balance + "\n").toString();
 
         // prepare response message
         resp.setStatus(200);
