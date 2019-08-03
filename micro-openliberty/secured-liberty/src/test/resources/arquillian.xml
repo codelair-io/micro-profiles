@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<arquillian xmlns="http://jboss.org/schema/arquillian"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xsi:schemaLocation="
+<?xml version="1.0" encoding="UTF-8" ?>
+<arquillian xmlns="http://jboss.org/schema/arquillian" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
         http://jboss.org/schema/arquillian
         http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
 
@@ -11,7 +9,7 @@
 
     <container qualifier="liberty-managed" default="true">
         <configuration>
-            <property name="wlpHome">target/liberty/wlp</property>
+            <property name="wlpHome">${env.SERVER_DIR}/openliberty/19.0.0.7/wlp</property>
             <property name="serverName">liberty</property>
             <property name="httpPort">9080</property>
             <property name="javaVmArguments">-Dcom.ibm.ws.logging.console.log.level=DEBUG</property>

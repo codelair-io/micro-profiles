@@ -19,57 +19,46 @@ import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(Arquillian.class)
-public class SecureResourceTest extends AbstractRunner{
+public class SecureResourceTest extends AbstractRunner {
 
     @Deployment
     public static WebArchive createDeployment() {
         return createBaseDeployment()
-                .addClasses(
-                        JaxRsApplication.class,
-                        SecureResource.class,
-                        OidcClient.class
-                );
+            .addClasses(JaxRsApplication.class, SecureResource.class, OidcClient.class);
     }
 
     private JsonObject token;
 
     @Before
-    public void setupTest(){
+    public void setupTest() {
         var oidcClient = OidcClient.Builder.newBuilder()
-                .setClientId("admin-cli")
-                .setUsername("admin")
-                .setPassword("admin")
-                .setRedirectUri("")
-                .setAuthUrl("http://localhost:4040/auth/realms/master/protocol/openid-connect/auth")
-                .setTokenUrl("http://localhost:4040/auth/realms/master/protocol/openid-connect/token")
-                .build();
+        .setClientId("app-client")
+        .setClientSecret("app-client-secret")
+        .setUsername("app-user-regular")
+        .setPassword("app-user-regular-pass")
+        .setRedirectUri("")
+        .setAuthUrl("http://localhost:4040/auth/realms/master/protocol/openid-connect/auth")
+        .setTokenUrl("http://localhost:4040/auth/realms/master/protocol/openid-connect/token").build();
 
         token = oidcClient.performTokenCall(OidcClient.FetchMethod.DIRECT_ACCESS_GRANT);
     }
 
     @Test
-    public void shouldFailForNonAuthUser(@ArquillianResource URL contextPath){
-        var resp = given()
-            .when()
-                .get(contextPath + "secure/denyall")
-            .thenReturn();
+    public void shouldFailForNonAuthUser(@ArquillianResource URL contextPath) {
+        var resp = given().when().get(contextPath + "secure/denyall").thenReturn();
 
-        assertThat(resp.getStatusCode())
-                .isEqualTo(HttpURLConnection.HTTP_FORBIDDEN);
+        assertThat(resp.getStatusCode()).isEqualTo(HttpURLConnection.HTTP_FORBIDDEN);
     }
 
     @Test
-    public void shouldAllowWithAuth(@ArquillianResource URL contextPath){
+    public void shouldAllowWithAuth(@ArquillianResource URL contextPath) {
         System.out.println("token = " + token.getString("access_token"));
-        var resp =
-                given()
+        var resp = given()
                     .header("Authorization", "Bearer " + token.getString("access_token"))
-                .when()
-                    .get(contextPath + "secure/allowIfAuth")
+                    .when().get(contextPath + "secure/allowIfAuth")
                     .thenReturn();
 
-        assertThat(resp.getStatusCode())
-                .isEqualTo(HttpURLConnection.HTTP_OK);
+        assertThat(resp.getStatusCode()).isEqualTo(HttpURLConnection.HTTP_OK);
     }
 
 }

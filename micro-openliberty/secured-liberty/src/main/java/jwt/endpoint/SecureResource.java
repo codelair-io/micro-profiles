@@ -24,11 +24,18 @@ public class SecureResource {
     }
 
     @GET
-    @RolesAllowed("admin")
+    @RolesAllowed({"ADMIN", "USER"})
     @Path("allowIfAuth")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getAuth() {
         return Response.ok("Hello " + jwtPrinciple.getName()).build();
     }
 
+    @GET
+    @RolesAllowed({"ADMIN"})
+    @Path("onlyAllowAdmin")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getAdminAuth() {
+        return Response.ok("Hello " + jwtPrinciple.getName()).build();
+    }
 }
