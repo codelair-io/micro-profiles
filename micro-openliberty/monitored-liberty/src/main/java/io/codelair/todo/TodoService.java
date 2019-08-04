@@ -39,7 +39,6 @@ public class TodoService {
     @Produces(MediaType.APPLICATION_JSON)
     @Counted(name = "getAllTodos.count",
             absolute = true, //Use absolute name of metrics, w.o prepending package
-            monotonic = true, //if false, counter is decr. when method returns
             description = "sample-description",
             tags = {"app=myval", "metric=customCounterMetric"})
     public Response getAllTodos(){

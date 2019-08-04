@@ -37,7 +37,7 @@
         <module>faulttolerant-liberty</module>
         <module>healthy-liberty</module>
         <module>monitored-liberty</module>
-        <module>resty-liberty</module>
+        <module>openapi-liberty</module>
         <module>traced-liberty</module>
         <module>secured-liberty</module>
     </modules>
