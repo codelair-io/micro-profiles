@@ -18,3 +18,4 @@ A small project used to test Eclipse Microprofile on different containers.
 4. Payara/Payara Micro
 5. Thorntail
 6. Quarkus
+7. Helidon.io
