@@ -1,14 +1,19 @@
 package io.codelair.todo;
 
+import org.eclipse.microprofile.metrics.MetricRegistry;
 import org.eclipse.microprofile.metrics.MetricUnits;
 import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.RegistryType;
 import org.eclipse.microprofile.metrics.annotation.Timed;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +23,10 @@ import java.util.List;
 public class TodoService {
 
     private List<Todo> todoList = new ArrayList<>();
+
+    @Inject
+    @RegistryType(type = MetricRegistry.Type.APPLICATION)
+    MetricRegistry registry;
 
     @PostConstruct
     public void postConstruct(){
@@ -47,11 +56,19 @@ public class TodoService {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createTodo(Todo todo){
+        var resp = Response
+            .created(URI.create("/todos/" + todo.getId()))
+            .build();
         // Adjust new task id
         todo.setId(todoList.size() + 1);
-        todoList.add(todo);
-        return Response.ok().build();
+        if (todoList.contains(todo))
+                resp = Response.status(409).build();
+        else todoList.add(todo);
+
+        registry.counter("create_todo_" + resp.getStatus()).inc();
+        return resp;
     }
 
 }

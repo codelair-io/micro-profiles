@@ -48,4 +48,13 @@ public class Todo {
         isFinished = finished;
         return this;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if( !(obj instanceof Todo) )
+            return false;
+        var todoComparable = (Todo) obj;
+
+        return this.task.equals(todoComparable.task);
+    }
 }
