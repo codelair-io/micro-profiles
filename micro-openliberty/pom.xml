@@ -40,6 +40,7 @@
         <module>openapi-liberty</module>
         <module>traced-liberty</module>
         <module>secured-liberty</module>
+        <module>reactive-liberty</module>
     </modules>
 
     <build>
