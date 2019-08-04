@@ -25,7 +25,7 @@ public class Pinger
     }
 
     @Outgoing( value = "ping-sink" )
-    public String pingService()
+    private String pingService()
     {
         log.debug( "Pinging!" );
         return "Hello World" + LocalTime.now();

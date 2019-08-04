@@ -14,7 +14,7 @@ public class PingRecipient
     private static final Logger log = LoggerFactory.getLogger( PingRecipient.class.getName() );
 
     @Incoming( value = "ping-sink" )
-    public void ping( String message )
+    private void ping( String message )
     {
         log.debug( "Ping Message Received: %s", message );
     }
