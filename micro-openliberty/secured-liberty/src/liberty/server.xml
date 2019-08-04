@@ -4,22 +4,29 @@
     <!-- Enable features -->
     <featureManager>
         <feature>localConnector-1.0</feature>
-        <feature>microProfile-2.1</feature>
+        <feature>microProfile-3.0</feature>
         <feature>usr:arquillian-support-1.0</feature>
     </featureManager>
 
+    <logging consoleLogLevel="INFO" />
+
     <!-- This is the keystore that will be used by SSL and by JWT.
          The keystore is built using the maven keytool plugin -->
-    <keyStore id="defaultKeyStore" location="keystore.jceks" type="JCEKS" password="secret" />
+    <keyStore id="defaultKeyStore" location="${srcDir}/keystore.jceks" type="JCEKS" password="secret" />
 
     <!-- The MP JWT configuration that injects the caller's JWT into a
          ResourceScoped bean for inspection. -->
-    <mpJwt id="jwtUserConsumer" keyName="default" audiences="account" jwksUri="http://localhost:4040/auth/realms/master/protocol/openid-connect/certs" issuer="http://localhost:4040/auth/realms/master" userNameAttribute="preferred_username" />
+
+    <!-- Use this if using start_keycloak.sh -->
+    <!-- <mpJwt id="keyCloakJwtConsumer" keyName="default" audiences="account" jwksUri="http://localhost:4040/auth/realms/master/protocol/openid-connect/certs" issuer="http://localhost:4040/auth/realms/master" userNameAttribute="preferred_username" /> -->
+
+    <!-- Use this if jwtenizr is used -->
+    <mpJwt id="jwtenizrJwtConsumer" audiences="app-user" issuer="authority" keyName="jwtenizrKey" />
 
     <!-- To access this server from a remote client add a host attribute to the following element, e.g. host="*" -->
     <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" />
 
     <!-- Automatically expand WAR files and EAR files -->
     <applicationManager autoExpand="true" />
-    <applicationMonitor updateTrigger="mbean" />
+    <applicationMonitor dropins="dropins" dropinsEnabled="true" pollingRate="500ms" updateTrigger="polled" />
 </server>
