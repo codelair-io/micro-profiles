@@ -1,0 +1,11 @@
+openapi: ""
+info: ""
+paths: ""
+securityDefinitions:
+  fruits_auth:
+    type: "oauth2"
+    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
+    tokenUrl: "http://petstore.swagger.io/oauth/dialog"
+    flow: "accessCode"
+    scopes:
+      swagger: "Swagger"

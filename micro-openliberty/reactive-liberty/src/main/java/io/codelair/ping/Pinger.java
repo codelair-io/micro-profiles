@@ -1,33 +1,32 @@
 package io.codelair.ping;
 
-import org.eclipse.microprofile.reactive.messaging.Outgoing;
+import io.smallrye.reactive.messaging.annotations.Emitter;
+import io.smallrye.reactive.messaging.annotations.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
-import java.time.LocalTime;
+import javax.inject.Inject;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Pinger
 {
 
     private static final Logger log = LoggerFactory.getLogger( Pinger.class.getName() );
 
+    @Inject
+    @Stream( "ping-sink" )
+    Emitter< String > pingEmitter;
+
     @PostConstruct
     public void startPinger()
     {
         log.debug( "Pinger class Startup..." );
-
-        var count = 10;
-        while ( count-- > 0 )
-        {
-            pingService();
-        }
-    }
-
-    @Outgoing( value = "ping-sink" )
-    private String pingService()
-    {
-        log.debug( "Pinging!" );
-        return "Hello World" + LocalTime.now();
+        AtomicInteger counter = new AtomicInteger();
+        Executors.newSingleThreadScheduledExecutor()
+                .scheduleAtFixedRate( () -> pingEmitter.send( "Hello World #" + counter.getAndIncrement() )
+                        , 1, 2, TimeUnit.SECONDS );
     }
 }
